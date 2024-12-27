@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Student Score Prediction</title>
+  <link href="https://fonts.googleapis.com/css?family=Pacifico" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Arimo" rel="stylesheet">
+</head>
+<body>
+  <div class="prediction-form">
+    <h1>Student Score Prediction</h1>
+
+    <!-- Input Form for Model Prediction -->
+    <form action="{{ url_for('predict') }}" method="post">
+      <label>Gender (0 for Female, 1 for Male):</label>
+      <input type="number" name="gender" min="0" max="1" required><br>
+
+      <label>Race/Ethnicity:</label>
+      <select name="race_ethnicity" required>
+        <option value="group A">Group A</option>
+        <option value="group B">Group B</option>
+        <option value="group C">Group C</option>
+        <option value="group D">Group D</option>
+        <option value="group E">Group E</option>
+      </select><br>
+
+      <label>Parental Level of Education:</label>
+      <select name="parental_level_of_education" required>
+        <option value="bachelor's degree">Bachelor's Degree</option>
+        <option value="master's degree">Master's Degree</option>
+        <option value="associate's degree">Associate's Degree</option>
+        <option value="some college">Some College</option>
+        <option value="high school">High School</option>
+      </select><br>
+
+      <label>Lunch (0 for Standard, 1 for Free/Reduced):</label>
+      <input type="number" name="lunch" min="0" max="1" required><br>
+
+      <label>Test Preparation Course (0 for None, 1 for Completed):</label>
+      <input type="number" name="test_preparation_course" min="0" max="1" required><br>
+
+      <label>Math Score:</label>
+      <input type="number" name="math_score" min="0" max="100" required><br>
+
+      <label>Reading Score:</label>
+      <input type="number" name="reading_score" min="0" max="100" required><br>
+
+      <label>Writing Score:</label>
+      <input type="number" name="writing_score" min="0" max="100" required><br>
+
+      <button type="submit">Predict</button>
+    </form>
+
+<h2>Data Visualizations</h2>
+<ul>
+  <li><a href="/graph-gender">Average Score by Gender</a></li>
+  <li><a href="/graph-education">Score Distribution by Parental Education</a></li>
+  <li><a href="/graph-correlation">Correlation Heatmap of Scores</a></li>
+  <li><a href="/graph-ethnicity">Average Score by Race/Ethnicity</a></li>
+  <li><a href="/graph-test-preparation">Score Distribution by Test Preparation</a></li>
+</ul>
+
+
+    <br><br>
+    <h3>{{ prediction_text }}</h3>
+  </div>
+</body>
+</html>
